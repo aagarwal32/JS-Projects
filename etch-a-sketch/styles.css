@@ -1,0 +1,31 @@
+:root {
+    --board-size: 1000px;
+}
+
+#main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+#board {
+    display: flex;
+    flex-direction: column;
+    background-color: grey;
+    height: var(--board-size);
+    width: var(--board-size);
+    border: 5px solid black;
+}
+
+.row {
+    flex: 1;
+    display: flex;
+    gap: 0px;
+}
+
+.tile {
+    flex: 1;
+    background-color: white;
+}
