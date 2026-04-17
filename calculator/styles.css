@@ -1,0 +1,52 @@
+#calculator {
+    display: flex;
+    flex-direction: column;
+    background-color: gainsboro;
+    border: 5px solid black;
+    margin: 100px auto;
+    height: 600px;
+    width: 400px;
+}
+
+#screen {
+    display: flex;
+    background-color: white;
+    border-top: 4px solid black;
+    border-bottom: 2px solid black;
+    max-height: 100px;
+    margin-top: 50px;
+    flex: 1;
+}
+
+#btn-board {
+    display: flex;
+    flex-direction: column;
+    background-color: gainsboro;
+    border-top: 2px solid black;
+    flex: 1;
+}
+
+.row {
+    display: flex;
+    flex: 1;
+}
+
+.btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    flex: 1;
+}
+
+.clear {
+    flex: 3.05;  /* Takes 3x the space */
+}
+
+.divide {
+    flex: 1;  /* Takes 1x the space */
+}
+
+.equal {
+    flex: 2.02;
+}
