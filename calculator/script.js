@@ -54,7 +54,7 @@ function handleDec(inputs) {
     if (inputs.at(-1).includes("_")) {
         inputs[inputs.length - 1] = "0.";
     // number already contains decimal
-    } else if (inputs.at(-1).includes(".")) {
+    } else if (inputs.at(-1).includes(".") || inputs.at(-1).length > 9) {
         return inputs;
     // concat decimal
     } else {
@@ -68,6 +68,8 @@ function concatNum(num, inputs) {
     // format properly
     if (inputs.at(-1).includes("_")) {
         inputs[inputs.length - 1] = "";
+    } else if (inputs.at(-1).length > 9) {
+        return inputs;
     }
     // concat number
     inputs[inputs.length - 1] = inputs[inputs.length - 1] + num;
