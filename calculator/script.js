@@ -54,7 +54,7 @@ function handleDec(inputs) {
     if (inputs.at(-1).includes("_")) {
         inputs[inputs.length - 1] = "0.";
     // number already contains decimal
-    } else if (inputs.at(-1).includes(".") || inputs.at(-1).length > 9) {
+    } else if (inputs.at(-1).includes(".") || inputs.at(-1).length > 10) {
         return inputs;
     // concat decimal
     } else {
