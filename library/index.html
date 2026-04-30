@@ -9,6 +9,31 @@
 </head>
 <body>
     <!-- form fields go here -->
+     <fieldset class="form-container">
+        <legend>New Book</legend>
+
+        <div class="form-input">
+            <label for="author-entry">Author: </label>
+            <input type="text" id="author-entry" name="author">
+        </div>
+        <div class="form-input">
+            <label for="title-entry">Title: </label>
+            <input type="text" id="title-entry" name="title">
+        </div>
+
+        <div class="form-input">
+            <label for="pages-entry">Pages: </label>
+            <input type="number" id="pages-entry" name="pages">
+        </div>
+        
+        <div class="form-input">
+            <label for="read-check">Read: </label>
+            <input type="checkbox" id="read-check" name="read">
+        </div>
+        
+        <button class="submit-btn">Add Book</button>     
+     </fieldset>
+     
     <!-- shelf div stores books as cards (use flex wrap property) -->
     <div id="shelf"></div>
 </body>
