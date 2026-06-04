@@ -78,9 +78,18 @@ nav {
     font-weight: 800;
     line-height: 4rem;
     margin-top: 12px;
+    text-align: center;
 }
 
 .body-text {
     font-size: 1rem;
     margin-top: 24px;
+}
+
+.menu-items {
+  white-space: pre-line;
+  text-align: center;
+  font-family: monospace;
+  font-style: italic;
+
 }

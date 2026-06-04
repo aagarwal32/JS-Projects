@@ -1,3 +1,5 @@
+import burgerImg from "./images/burgerbun_burger_img.jpg"
+
 // exporting function for homepage content
 export function displayHomeContent() {
     const contentBox = document.querySelector("#content");
@@ -8,6 +10,9 @@ export function displayHomeContent() {
     heading.classList.add("heading");
     heading.textContent = "The Tastiest Burgers in your Area!";
 
+    const frontPageImg = document.createElement("img");
+    frontPageImg.src = burgerImg;
+
     const bodyText = document.createElement("div");
     bodyText.classList.add("body-text");
     bodyText.textContent = "Take a bite into our handcrafted signature golden brown buns, tasting \
@@ -16,6 +21,7 @@ export function displayHomeContent() {
     
     contentBox.appendChild(seperator);
     contentBox.appendChild(heading);
+    contentBox.appendChild(frontPageImg);
     contentBox.appendChild(bodyText);
 }
 
