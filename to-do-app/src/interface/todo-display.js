@@ -1,11 +1,13 @@
 // src/interface/todo-display.js
 export class ToDoDisplay {
-    constructor(containerSelector) {
+    constructor(containerSelector, logger) {
         this.container = document.querySelector(containerSelector);
+        this.logger = logger;
     }
 
     render(todos) {
         this.container.replaceChildren();
+        this.logger.log(`Rendering ${todos.length} todos`);
         todos.forEach(todo => {
             const todoDiv = this.createTodoElement(todo);
             this.container.appendChild(todoDiv);
@@ -17,14 +19,26 @@ export class ToDoDisplay {
         todoDiv.className = "todo-item";
         todoDiv.setAttribute("data-id", todo.id);
         
-        // Status
+        // Status and delete button
+        const top_seperator = document.createElement("div");
+        top_seperator.className = "top-seperator";
+
         const statusDiv = this.createStatusDiv(todo.completed);
-        todoDiv.appendChild(statusDiv);
+        const delButton = this.createDeleteButton(todo.id);
+        top_seperator.appendChild(statusDiv);
+        top_seperator.appendChild(delButton);
+        todoDiv.appendChild(top_seperator);
         
         // Separator for title and date
         const seperator = document.createElement("div");
         seperator.className = "seperator";
-        seperator.appendChild(this.createTitleDiv(todo.title));
+        
+        const inner_seperator = document.createElement("div");
+        inner_seperator.className = "inner-seperator";
+        inner_seperator.appendChild(this.createToggleBox(todo.id, todo.completed));
+        inner_seperator.appendChild(this.createTitleDiv(todo.title));
+
+        seperator.appendChild(inner_seperator);
         seperator.appendChild(this.createDateDiv(todo.dueDate));
         todoDiv.appendChild(seperator);
         
@@ -42,6 +56,23 @@ export class ToDoDisplay {
         return statusDiv;
     }
 
+    createDeleteButton(todo_id) {
+        const delButton = document.createElement("button");
+        delButton.className = "delete-btn";
+        delButton.textContent = "-";
+        delButton.dataset.id = todo_id;
+        return delButton;
+    }
+
+    createToggleBox(todo_id, completed) {
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.className = "todo-checkbox";
+        checkbox.checked = completed;
+        checkbox.dataset.id = todo_id;
+        return checkbox;
+    }
+
     createTitleDiv(title) {
         const titleDiv = document.createElement("div");
         titleDiv.className = "todo-title";
@@ -52,14 +83,14 @@ export class ToDoDisplay {
     createDateDiv(date) {
         const dateDiv = document.createElement("div");
         dateDiv.className = "todo-date";
-        dateDiv.textContent = date ? date.toLocaleDateString() : "No date";
+        dateDiv.textContent = date ? date.toLocaleDateString() : "Unscheduled";
         return dateDiv;
     }
 
     createNoteDiv(note) {
         const noteDiv = document.createElement("div");
         noteDiv.className = "todo-note";
-        noteDiv.textContent = note || "No notes";
+        noteDiv.textContent = note || "";
         return noteDiv;
     }
 }

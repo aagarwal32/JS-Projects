@@ -79,3 +79,70 @@ textarea {
     resize: vertical;
     border: 1px solid gainsboro;
 }
+
+#todo-list {
+  display: flex;
+  width: 400px;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.todo-item {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  border: 1px solid black;
+  padding: 8px;
+}
+
+.todo-status {
+  font-size: 0.75rem;
+}
+
+.delete-btn {
+    width: 16px;
+    height: 16px;
+    padding: 2px;
+    background-color: lightgrey;
+    color: black;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.delete-btn:hover {
+    background-color: lightcoral;
+}
+
+.top-seperator {
+  display: flex;
+  justify-content: space-between;
+}
+
+.todo-checkbox {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.todo-title {
+  font-weight: 600;
+}
+
+.todo-date {
+  color: darkblue;
+}
+
+.seperator {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.inner-seperator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
