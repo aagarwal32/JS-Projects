@@ -7,15 +7,32 @@
 </head>
 <body>
     <img src="#" alt="">
+    <label for="search-gif-input">Search Gif:</label>
+    <input type="text" id="search-gif-input">
+    <button id="search-gif-btn">Search</button>
     <script>
         const img = document.querySelector('img');
-        fetch('https://api.giphy.com/v1/gifs/translate?api_key=LsLUrpFKCCF1zfj3CpBRj5Zr6MDaUIAP&s=cats')
-            .then(response => {
-                return response.json();
-            })
-            .then(response => {
-                img.src = response.data.images.original.url;
-            });
+        const searchGifInput = document.querySelector('#search-gif-input');
+        const searchGifBtn = document.querySelector('#search-gif-btn');
+
+        searchGifBtn.addEventListener('click', () => {
+            if (searchGifInput.value) {
+                fetch(`https://api.giphy.com/v1/gifs/translate?api_key=LsLUrpFKCCF1zfj3CpBRj5Zr6MDaUIAP&s=${encodeURIComponent(searchGifInput.value)}`)
+                    .then(response => {
+                        return response.json();
+                    })
+                    .then(response => {
+                        img.src = response.data.images.original.url;
+                    })
+                    .catch(error => {
+                        console.error(error);
+                        alert('Something went wrong fetching the GIF. Please try again.');
+                    });
+            } else {
+                alert('Search field cannot be blank.');
+            }
+            
+        });
     </script>
 </body>
 </html>
