@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img src="#" alt="">
+    <label for="search-gif-input">Search Gif:</label>
+    <input type="text" id="search-gif-input">
+    <button id="search-gif-btn">Search</button>
+    <script>
+        const img = document.querySelector('img');
+        const searchGifInput = document.querySelector('#search-gif-input');
+        const searchGifBtn = document.querySelector('#search-gif-btn');
+
+        searchGifBtn.addEventListener('click', async () => {
+            if (searchGifInput.value) {
+                try {
+                    const response = await fetch(`https://api.giphy.com/v1/gifs/translate?api_key=LsLUrpFKCCF1zfj3CpBRj5Zr6MDaUIAP&s=${encodeURIComponent(searchGifInput.value)}`);
+                    const responseData = await response.json();
+                    img.src = responseData.data.images.original.url;
+                } catch (error) {
+                    console.error(error);
+                    alert('Something went wrong fetching the GIF. Please try again.');
+                }       
+            } else {
+                alert('Search field cannot be blank.');
+            }
+        });
+    </script>
+</body>
+</html>
